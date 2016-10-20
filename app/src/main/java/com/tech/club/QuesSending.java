@@ -4,24 +4,18 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -29,10 +23,7 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import java.util.List;
-
 import Data.SetterGetterQuestions;
-import ParseWorks.DisplayImage;
 import ParseWorks.QAworks;
 
 
@@ -41,9 +32,9 @@ public class QuesSending extends AppCompatActivity implements View.OnClickListen
 
     EditText ques;
     Button send_ques;
-    private ProgressDialog pDialog;
     int number=0;
     String cheked_grp;
+    private ProgressDialog pDialog;
     private RadioGroup radio_grp;
     private ListView grp_list;
 
@@ -57,7 +48,6 @@ public class QuesSending extends AppCompatActivity implements View.OnClickListen
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -65,10 +55,11 @@ public class QuesSending extends AppCompatActivity implements View.OnClickListen
         ques = (EditText) findViewById(R.id.ques_text);
         send_ques=(Button) findViewById(R.id.ask);
         send_ques.setOnClickListener(this);
+
         grp_list=(ListView)findViewById(R.id.grp_list);
 
 
-        ParseQuery<ParseObject> query=ParseQuery.getQuery("Group");
+      /*  ParseQuery<ParseObject> query = ParseQuery.getQuery("Group");
         query.whereEqualTo("members", ParseUser.getCurrentUser());
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -77,26 +68,24 @@ public class QuesSending extends AppCompatActivity implements View.OnClickListen
 
                     String user_groups[] = new String[list.size()];
                     for (int i = 0; i < list.size(); i++) {
-                        user_groups[i]=list.get(i).getString("name");
+                        user_groups[i] = list.get(i).getString("name");
                     }
-                    ArrayAdapter<String> adapter=new ArrayAdapter<String>(QuesSending.this,android.R.layout.simple_list_item_multiple_choice,user_groups);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(QuesSending.this, android.R.layout.simple_list_item_multiple_choice, user_groups);
                     grp_list.setAdapter(adapter);
                     grp_list.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
                     grp_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            grp_list.setItemChecked(position,true);
-                            cheked_grp=((TextView) view).getText().toString();
+                            grp_list.setItemChecked(position, true);
+                            cheked_grp = ((TextView) view).getText().toString();
 
                         }
                     });
-                }
-
-                else{
+                } else {
 
                 }
             }
-        });
+        });*/
 
 
     }
@@ -120,6 +109,8 @@ public class QuesSending extends AppCompatActivity implements View.OnClickListen
         if (id == R.id.action_settings) {
             startActivity(new Intent(this,ChangePassword.class));
         }
+        if (id == android.R.id.home)
+            finish();
 
         return super.onOptionsItemSelected(item);
     }
@@ -141,15 +132,12 @@ public class QuesSending extends AppCompatActivity implements View.OnClickListen
         final String asked_by=sp.getString("user_logged", " ");
 
 
+        if (question != null && !question.isEmpty()) {
 
-
-
-        if (question != null && !question.isEmpty() && cheked_grp!=null) {
             final ParseObject testObject = new ParseObject("Ques");
             testObject.put("question", question);
             testObject.put("User", asked_by);
             testObject.put("answer", number);
-            testObject.put("group",cheked_grp);
 
             ParseQuery<ParseUser> query = ParseUser.getQuery();
             query.include("Profile");
@@ -202,7 +190,10 @@ public class QuesSending extends AppCompatActivity implements View.OnClickListen
                                 QAworks.refreshQuestions(QuesSending.this);
 
                                 Ques.sgQuestionsArrayList.add(0, newSGQ);
-                                Ques.adapter.notifyDataSetChanged();
+
+                                if (Ques.adapter != null)
+                                    Ques.adapter.notifyDataSetChanged();
+
 
                             } else {
                                 Toast.makeText(QuesSending.this, "failed to upload "+e.getMessage(), Toast.LENGTH_SHORT).show();

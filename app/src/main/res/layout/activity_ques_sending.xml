@@ -13,30 +13,30 @@
 
     <RelativeLayout
 
+        android:id="@+id/relativeLayout"
         android:layout_width="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/app_bar"
         android:layout_centerInParent="true"
-        android:background="#DDDDDD"
-        android:layout_height="wrap_content"
-        android:id="@+id/relativeLayout">
+        android:layout_margin="16dp"
+        android:background="#DDDDDD">
 
         <EditText
 
             android:id="@+id/ques_text"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:minHeight="55dp"
-            android:hint="Your question?"
             android:background="#00DDDDDD"
-            android:inputType="textCapSentences"/>
+            android:hint="Your question?"
+            android:inputType="textCapSentences"
+            android:minHeight="55dp"
+            android:padding="8dp" />
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:background="#BBBBBB"
             android:layout_below="@id/ques_text"
+            android:background="#BBBBBB"
             >
 
 
@@ -47,19 +47,19 @@
             android:id="@+id/ask"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
-            android:background="#00aabbcc"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/ques_text"
+            android:background="#00aabbcc"
             android:text="Ask now" />
 
 
     </RelativeLayout>
 <ListView
-    android:visibility="visible"
-    android:padding="16dp"
-    android:layout_below="@+id/relativeLayout"
     android:id="@+id/grp_list"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"></ListView>
+    android:layout_height="match_parent"
+    android:layout_below="@+id/relativeLayout"
+    android:padding="16dp"
+    android:visibility="gone"></ListView>
 
 </RelativeLayout>

@@ -7,20 +7,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
-
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
-
-import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -30,26 +24,19 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.parse.DeleteCallback;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import Adapters.QuestionsListAdapter;
@@ -59,24 +46,94 @@ import ParseWorks.QAworks;
 
 public class Ques extends Fragment implements SwipeRefreshLayout.OnRefreshListener, AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
+    public static List<SetterGetterQuestions> sgQuestionsArrayList = new ArrayList<>();
+    public static boolean first_run = true;
     static ListView questionList;
-    private static SwipeRefreshLayout swipeLayout;
     static QuestionsListAdapter adapter;
     static ProgressBar spinner;
     static Context context;
-    public static List<SetterGetterQuestions> sgQuestionsArrayList = null;
-    String questionClicked, questionsObjectId;
-    private String questionsUser;
     static TextView first;
-    private FloatingActionButton upload_quesFab;
-    public static boolean first_run=true;
     static ImageView first_img;
-    private String questionTime;
+    private static SwipeRefreshLayout swipeLayout;
+    String questionClicked, questionsObjectId;
     RelativeLayout mainContent;
+    private String questionsUser;
+    private FloatingActionButton upload_quesFab;
+    private String questionTime;
     private ProgressDialog pdialog;
     private String mr_user;
     private DrawerLayout drawerLayout;
     private ProgressDialog mProgressDialog;
+
+    public static void refreshQuestionsCallback(List<SetterGetterQuestions> setterGetterQuestionsArrayList) {
+
+        if (setterGetterQuestionsArrayList != null) {
+
+            sgQuestionsArrayList.clear();
+            sgQuestionsArrayList.addAll(setterGetterQuestionsArrayList);
+
+            if (adapter != null)
+                adapter.notifyDataSetChanged();
+            else {
+                adapter = new QuestionsListAdapter(context, sgQuestionsArrayList);
+                questionList.setAdapter(adapter);
+                first_img.setVisibility(View.INVISIBLE);
+                first.setVisibility(View.INVISIBLE);
+            }
+
+        } else {
+
+            if (sgQuestionsArrayList != null)
+                sgQuestionsArrayList.clear();
+
+            if (adapter != null)
+                adapter.notifyDataSetChanged();
+
+            first_img.setVisibility(View.VISIBLE);
+            first.setVisibility(View.VISIBLE);
+        }
+
+        swipeLayout.setRefreshing(false);
+
+    }
+
+    public static void retrieveQuestionsCallback(List<SetterGetterQuestions> setterGetterQuestionsArrayList, boolean success) {
+
+        if (first_run) {
+
+
+            if (success) {
+                sgQuestionsArrayList = setterGetterQuestionsArrayList;
+                adapter = new QuestionsListAdapter(context, setterGetterQuestionsArrayList);
+                questionList.setAdapter(adapter);
+                spinner.setVisibility(View.INVISIBLE);
+
+                //Toast.makeText(context, " Ques Updated", Toast.LENGTH_SHORT).show();
+            } else {
+                //Toast.makeText(context, " Ques not updated", Toast.LENGTH_SHORT).show();
+                first_img.setVisibility(View.VISIBLE);
+                first.setVisibility(View.VISIBLE);
+                spinner.setVisibility(View.INVISIBLE);
+            }
+        } else {
+            if (success) {
+
+                sgQuestionsArrayList = setterGetterQuestionsArrayList;
+                adapter = new QuestionsListAdapter(context, setterGetterQuestionsArrayList);
+                questionList.setAdapter(adapter);
+                spinner.setVisibility(View.INVISIBLE);
+
+                // Toast.makeText(Ques.this, " Ques Updated", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, " Ques Updated", Toast.LENGTH_SHORT).show();
+
+            } else {
+                // Toast.makeText(context, " Ques not updated", Toast.LENGTH_SHORT).show();
+                first_img.setVisibility(View.VISIBLE);
+                first.setVisibility(View.VISIBLE);
+                spinner.setVisibility(View.INVISIBLE);
+            }
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -124,7 +181,6 @@ public class Ques extends Fragment implements SwipeRefreshLayout.OnRefreshListen
         return view;
     }
 
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -150,25 +206,11 @@ public class Ques extends Fragment implements SwipeRefreshLayout.OnRefreshListen
         startActivity(new Intent(getActivity(), QuesSending.class));
     }
 
-
     @Override
     public void onRefresh() {
 
         QAworks.refreshQuestions(getActivity());
     }
-
-
-
-
-    public static void refreshQuestionsCallback(List<SetterGetterQuestions> setterGetterQuestionsArrayList) {
-
-        sgQuestionsArrayList.clear();
-        sgQuestionsArrayList.addAll(setterGetterQuestionsArrayList);
-        adapter.notifyDataSetChanged();
-        swipeLayout.setRefreshing(false);
-
-    }
-
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -190,44 +232,6 @@ public class Ques extends Fragment implements SwipeRefreshLayout.OnRefreshListen
         startActivity(intent);
 
 
-    }
-
-
-
-    public static void retrieveQuestionsCallback(List<SetterGetterQuestions> setterGetterQuestionsArrayList, boolean success) {
-
-        if(first_run) {
-
-
-            if (success) {
-                sgQuestionsArrayList = setterGetterQuestionsArrayList;
-                adapter = new QuestionsListAdapter(context, setterGetterQuestionsArrayList);
-                questionList.setAdapter(adapter);
-                spinner.setVisibility(View.INVISIBLE);
-
-                // Toast.makeText(Ques.this, " Ques Updated", Toast.LENGTH_SHORT).show();
-            } else {
-
-                first_img.setVisibility(View.VISIBLE);
-                first.setVisibility(View.VISIBLE);
-                spinner.setVisibility(View.INVISIBLE);
-            }
-        }
-
-
-        else {
-            if (success) {
-                sgQuestionsArrayList = setterGetterQuestionsArrayList;
-                adapter = new QuestionsListAdapter(context, setterGetterQuestionsArrayList);
-                questionList.setAdapter(adapter);
-                spinner.setVisibility(View.INVISIBLE);
-
-                // Toast.makeText(Ques.this, " Ques Updated", Toast.LENGTH_SHORT).show();
-            } else {
-
-                QAworks.retreiveQuestions(context);
-            }
-        }
     }
 
     @Override
@@ -276,9 +280,10 @@ public class Ques extends Fragment implements SwipeRefreshLayout.OnRefreshListen
                                                     pdialog.dismiss();
                                                     QAworks.refreshQuestions(getActivity());
                                                     Snackbar.make(mainContent, "Deleted", Snackbar.LENGTH_SHORT).show();
-                                                } else
+                                                } else {
                                                     pdialog.dismiss();
-                                                Snackbar.make(mainContent, " Not Deleted", Snackbar.LENGTH_SHORT).show();
+                                                    Snackbar.make(mainContent, " Not Deleted", Snackbar.LENGTH_SHORT).show();
+                                                }
                                             }
                                         });
                                     }

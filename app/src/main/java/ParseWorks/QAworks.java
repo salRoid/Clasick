@@ -78,6 +78,8 @@ public class QAworks {
                     }
                     Ques.refreshQuestionsCallback(setterGetterQuestionsArrayList);
                    // Toast.makeText(context, " Ques Updated", Toast.LENGTH_LONG).show();
+                } else {
+                    Ques.refreshQuestionsCallback(null);
                 }
             }
         });
