@@ -15,11 +15,10 @@ import Data.SetterGetterAnswers;
 
 
 public class AnswersListAdapter extends BaseAdapter {
-    List<SetterGetterAnswers> setterGetterAnswersList = null;
-    Context context;
     static TextView comment_by;
     static TextView clock;
-
+    List<SetterGetterAnswers> setterGetterAnswersList = null;
+    Context context;
     private String answer_Time;
     private String answer_User;
 

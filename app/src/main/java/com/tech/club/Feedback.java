@@ -1,9 +1,8 @@
 package com.tech.club;
 
 import android.app.ProgressDialog;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -22,10 +20,11 @@ import com.parse.SaveCallback;
 
 public class Feedback extends AppCompatActivity {
 
+    RelativeLayout mainContent;
     private EditText feedback;
     private Button snd_fdbck;
     private ProgressDialog pDialog;
-    RelativeLayout mainContent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

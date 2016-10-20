@@ -9,9 +9,9 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,23 +38,43 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.regex.Pattern;
 
-import Fragments.DashboardFragment;
-
 
 public class GettingFiles extends ActionBarActivity {
 
+    final int PICKFILE_RESULT_CODE = 34;
     Button bt_choose, bt_upload;
-    private ProgressDialog pDialog;
     EditText ETtitle;
     String title="";
     byte[] file_to_be_uploaded;
-    final int PICKFILE_RESULT_CODE = 34;
     LinearLayout about_file;
     ImageView iv;
     TextView tv;
     String filename = " ";
     String format = " ";
+    private ProgressDialog pDialog;
 
+    public static byte[] loadFile(String sourcePath) throws IOException {
+        InputStream inputStream = null;
+        try {
+            inputStream = new FileInputStream(sourcePath);
+            return readFully(inputStream);
+        } finally {
+            if (inputStream != null) {
+                inputStream.close();
+            }
+        }
+    }
+
+    public static byte[] readFully(InputStream stream) throws IOException {
+        byte[] buffer = new byte[8192];
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+        int bytesRead;
+        while ((bytesRead = stream.read(buffer)) != -1) {
+            baos.write(buffer, 0, bytesRead);
+        }
+        return baos.toByteArray();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -206,7 +226,6 @@ public class GettingFiles extends ActionBarActivity {
 
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -228,7 +247,6 @@ public class GettingFiles extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -313,47 +331,6 @@ public class GettingFiles extends ActionBarActivity {
 
             }
         }
-    }
-
-
-
-
-
-
-
-    public static byte[] loadFile(String sourcePath) throws IOException
-    {
-        InputStream inputStream = null;
-        try
-        {
-            inputStream = new FileInputStream(sourcePath);
-            return readFully(inputStream);
-        }
-        finally
-        {
-            if (inputStream != null)
-            {
-                inputStream.close();
-            }
-        }
-    }
-
-
-
-
-
-
-    public static byte[] readFully(InputStream stream) throws IOException
-    {
-        byte[] buffer = new byte[8192];
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-        int bytesRead;
-        while ((bytesRead = stream.read(buffer)) != -1)
-        {
-            baos.write(buffer, 0, bytesRead);
-        }
-        return baos.toByteArray();
     }
 
 }

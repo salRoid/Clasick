@@ -10,19 +10,20 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.tech.club.R;
+
 import java.util.List;
+
 import Data.SetterGetterUploads;
 import Fragments.DashboardFragment;
 
 
 public class UploadsListAdapter extends BaseAdapter {
-    List<SetterGetterUploads> setterGetterUploadsList = null;
-    Context context;
     static TextView uploader;
-    private String user_desig;
     static TextView date;
     static Button download_button;
-
+    List<SetterGetterUploads> setterGetterUploadsList = null;
+    Context context;
+    private String user_desig;
     private String uploadTime;
     private String uploadUser;
 

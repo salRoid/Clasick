@@ -5,13 +5,12 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.tech.club.AnswerShow;
-import com.tech.club.Ques;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import Data.SetterGetterAnswers;
-import Data.SetterGetterQuestions;
+
 
 public class Answers {
 

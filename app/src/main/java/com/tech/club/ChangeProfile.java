@@ -10,12 +10,10 @@ import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
@@ -25,12 +23,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.parse.DeleteCallback;
-import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -48,21 +43,18 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-
-import ParseWorks.QAworks;
 
 
 public class ChangeProfile extends AppCompatActivity {
 
 
-    FloatingActionButton bt_next2;
     private static final int PICK_IMAGE = 1;
-    private int GET_FROM_GALLERY = 3;
+    static boolean profile_uploaded = false;
+    FloatingActionButton bt_next2;
     Uri selectedImage;
+    private int GET_FROM_GALLERY = 3;
     private Bitmap bitmap;
     private int MEDIA_TYPE_IMAGE = 1;
-    static boolean profile_uploaded = false;
     private Uri fileUri;
     private ProgressDialog pdialog;
     private CircularImageView user_img;
@@ -75,6 +67,40 @@ public class ChangeProfile extends AppCompatActivity {
     private String myprofile;
     private Context context;
 
+    public static int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) > reqHeight
+                    && (halfWidth / inSampleSize) > reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
+    }
+
+    private static int exifToDegrees(int exifOrientation) {
+        if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_90) {
+            return 90;
+        } else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_180) {
+            return 180;
+        } else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_270) {
+            return 270;
+        }
+        return 0;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -347,7 +373,6 @@ public class ChangeProfile extends AppCompatActivity {
         return mediaFile;
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -397,32 +422,6 @@ public class ChangeProfile extends AppCompatActivity {
         }
     }
 
-
-    public static int calculateInSampleSize(
-            BitmapFactory.Options options, int reqWidth, int reqHeight) {
-        // Raw height and width of image
-
-        final int height = options.outHeight;
-        final int width = options.outWidth;
-        int inSampleSize = 1;
-
-        if (height > reqHeight || width > reqWidth) {
-
-            final int halfHeight = height / 2;
-            final int halfWidth = width / 2;
-
-            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
-            // height and width larger than the requested height and width.
-            while ((halfHeight / inSampleSize) > reqHeight
-                    && (halfWidth / inSampleSize) > reqWidth) {
-                inSampleSize *= 2;
-            }
-        }
-
-        return inSampleSize;
-    }
-
-
     public Bitmap decodeSampledBitmapFromFile(String filePath,
                                               int reqWidth, int reqHeight) {
 
@@ -438,7 +437,6 @@ public class ChangeProfile extends AppCompatActivity {
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeFile(filePath, options);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -474,7 +472,6 @@ public class ChangeProfile extends AppCompatActivity {
         super.onBackPressed();
     }
 
-
     public Bitmap getRotatedImage(String path, Bitmap bmp) {
 
         ExifInterface exif = null;
@@ -500,18 +497,6 @@ public class ChangeProfile extends AppCompatActivity {
 
         return rotatedBitmap;
 
-    }
-
-
-    private static int exifToDegrees(int exifOrientation) {
-        if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_90) {
-            return 90;
-        } else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_180) {
-            return 180;
-        } else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_270) {
-            return 270;
-        }
-        return 0;
     }
 
 
