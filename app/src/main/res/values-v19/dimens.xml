@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="nav_margin_top">0dp</dimen>
+    <dimen name="app_bar_top_pad">0dp</dimen>
+</resources>

@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/basicbackcolor"
+    android:layout_height="match_parent"
+    tools:context="com.tech.club.AboutApp">
+
+
+
+
+
+    <ImageView
+        android:layout_centerInParent="true"
+        android:id="@+id/app_image"
+        android:src="@drawable/clasick"
+        android:layout_centerHorizontal="true"
+        android:layout_width="96dp"
+        android:layout_height="96dp" />
+
+
+
+    <TextView
+        android:id="@+id/app_name"
+        android:textSize="24sp"
+        android:textColor="#ffffff"
+        android:text="Clasick"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
+        android:layout_above="@+id/app_image"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+    <TextView
+        android:id="@+id/design"
+        android:layout_marginTop="16dp"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:text="des &amp; dev "
+        android:textColor="#ffffff"
+        android:textStyle="normal"
+        android:layout_below="@+id/app_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textSize="20sp"
+        android:text="salRoid"
+        android:layout_margin="4dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/design"
+        android:textColor="@color/primaryColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:layout_margin="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff"
+        android:text=" &#169; webianks"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

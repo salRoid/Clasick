@@ -1,0 +1,78 @@
+ <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/linearLayout"
+        android:layout_width="302dp"
+        android:background="#ffffff"
+        android:layout_height="match_parent"
+        android:layout_gravity="left|start"
+        android:fitsSystemWindows="true"
+      >
+
+
+
+    <RelativeLayout
+        android:id="@+id/nav_drw_img"
+        android:layout_width="fill_parent"
+        android:layout_height="210dp"
+        android:layout_gravity="left|top"
+        android:layout_marginTop="@dimen/nav_margin_top"
+        android:adjustViewBounds="true"
+        android:background="#eeeeee"
+        android:orientation="vertical"
+         >
+
+
+        <ImageView
+            android:layout_width="52dp"
+            android:src="@drawable/user"
+            android:layout_marginLeft="45dp"
+            android:layout_centerVertical="true"
+            android:layout_height="52dp" />
+
+
+
+
+        <View
+            android:layout_height="1dp"
+            android:id="@+id/line"
+            android:background="#DDDDDD"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="107dp"
+            android:layout_width="fill_parent"
+            />
+
+        <TextView
+            android:id="@+id/current_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/colorPrimaryDark"
+            android:layout_marginLeft="107dp"
+            android:layout_marginBottom="5dp"
+            android:layout_above="@id/line"
+            android:text="webianks"/>
+
+        <TextView
+            android:id="@+id/current_desig"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="107dp"
+            android:textColor="#9b9c9c"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/line"
+            android:text="student"/>
+
+         </RelativeLayout>
+
+     <android.support.v7.widget.RecyclerView
+         android:paddingTop="16dp"
+         android:layout_below="@id/nav_drw_img"
+         android:id="@+id/nav_draw_list"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+
+     </android.support.v7.widget.RecyclerView>
+
+
+</RelativeLayout>

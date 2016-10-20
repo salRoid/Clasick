@@ -1,0 +1,140 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/app_bar" />
+
+    <RelativeLayout
+        android:id="@+id/sel_ques"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_bar"
+        android:background="#ffffff"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp"
+        android:paddingBottom="13dp">
+
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:transitionName="@string/title_activity_about_app"
+            android:text="Question"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/User"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/question"
+            android:paddingTop="5dp"
+            android:text="user"
+            android:textColor="?attr/colorPrimaryDark"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="normal" />
+
+
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/question"
+            android:paddingTop="5dp"
+            android:text="time"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="normal"
+
+
+            />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sel_ques"
+        android:layout_marginBottom="50dp">
+
+        <ListView
+            android:id="@+id/answer_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:id="@+id/answer_img"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_centerInParent="true"
+                android:adjustViewBounds="true"
+                android:padding="16dp"
+                android:src="@drawable/answer"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/first_Answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/answer_img"
+                android:layout_centerHorizontal="true"
+                android:text="No data to display"
+                android:textColor="#9e9e9e"
+                android:textSize="17sp"
+                android:visibility="invisible" />
+
+
+            <ProgressBar
+                android:id="@+id/bar"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/custom_bg"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <EditText
+            android:id="@+id/answer_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/send"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="9"
+            android:background="#00aabbcc"
+            android:hint="Answer"
+            android:minHeight="50dp" />
+
+        <Button
+            android:id="@+id/send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#00aabbcc"
+            android:text="SEND"
+            android:textColor="#8c8c8a" />
+    </LinearLayout>
+
+</RelativeLayout>

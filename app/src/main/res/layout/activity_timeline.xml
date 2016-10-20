@@ -1,0 +1,147 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    tools:context="com.tech.club.Timeline">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp">
+
+
+        <TextView
+            android:background="#00dddddd"
+            android:padding="8dp"
+            android:id="@+id/tv_username"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:text="Name  "
+            android:textColor="#424242"
+            android:textSize="17sp" />
+
+
+        <TextView
+            android:id="@+id/set_user_orignalname"
+            android:layout_width="fill_parent"
+            android:padding="8dp"
+            android:layout_toRightOf="@id/tv_username"
+            android:layout_height="wrap_content"
+            android:text="--- --"
+            android:background="#00dddddd"
+            android:textSize="17sp" />
+
+
+        <View
+            android:layout_below="@id/set_user_orignalname"
+            android:layout_height="0.5dp"
+            android:layout_width="fill_parent"
+            android:layout_margin="16dp"
+            android:background="#dddddd"
+            ></View>
+
+
+
+
+        <TextView
+            android:id="@+id/tv_desig"
+            android:padding="8dp"
+            android:background="#00dddddd"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/set_user_orignalname"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="30dp"
+            android:text="Designation"
+            android:textColor="#424242"
+            android:textSize="17sp" />
+
+        <TextView
+
+            android:id="@+id/tv_timeline_desig"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="66.5dp"
+            android:layout_toRightOf="@id/tv_desig"
+            android:text="-"
+            android:background="#00dddddd"
+            android:padding="8dp"
+            android:textSize="17sp" />
+
+        <View
+            android:layout_below="@id/tv_timeline_desig"
+            android:layout_height="0.5dp"
+            android:layout_width="fill_parent"
+            android:layout_margin="16dp"
+            android:background="#dddddd"
+            ></View>
+
+
+
+
+
+        <TextView
+            android:id="@+id/questionji"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_timeline_desig"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="30dp"
+            android:text="Question"
+            android:padding="8dp"
+            android:background="#00dddddd"
+            android:textColor="#424242"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/question_count"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/questionji"
+            android:text="-"
+            android:layout_marginTop="133dp"
+            android:background="#00dddddd"
+            android:padding="8dp"
+            android:textSize="17sp" />
+        <View
+            android:layout_below="@id/question_count"
+            android:layout_height="0.5dp"
+            android:layout_width="fill_parent"
+            android:layout_margin="16dp"
+            android:background="#dddddd"
+            ></View>
+
+
+
+
+        <TextView
+            android:id="@+id/user_emailji"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/question_count"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="30dp"
+            android:text="E-mail"
+            android:padding="8dp"
+            android:background="#00dddddd"
+            android:textColor="#424242"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tv_usermail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#00dddddd"
+            android:layout_marginTop="199.5dp"
+            android:padding="8dp"
+            android:layout_toRightOf="@id/user_emailji"
+            android:text="---.com"
+            android:textSize="17sp" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

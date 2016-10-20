@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/waitingHeader"
+    android:background="#FFFFFF">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="11dp">
+
+
+        <RelativeLayout
+            android:id="@+id/user_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <com.pkmmte.view.CircularImageView
+
+                android:id="@+id/user_img"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="23dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+
+                android:src="@drawable/user" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/user_img"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/display_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="salroid"
+                    android:textColor="?attr/colorPrimaryDark"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/display_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/display_user"
+                    android:text="Mar 22/15"
+                    android:textSize="13sp"
+
+
+                    />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/con"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/user_container">
+
+            <TextView
+
+                android:id="@+id/tv_question"
+                android:layout_width="fill_parent"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:background="@null"
+                android:text="Question one"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/display_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_question"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:text="22 Ans"
+                android:textSize="13sp" />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:background="#e0e0e0"></LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:background="#DDDDDD" />
+
+
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+
+        <TextView
+            android:id="@+id/display_uploader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="salroid"
+            android:textSize="13sp"
+            android:textStyle="normal" />
+
+
+        <TextView
+            android:id="@+id/display_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Mar 22/15"
+            android:textSize="13sp"
+            android:textStyle="normal" />
+
+
+        <TextView
+            android:id="@+id/tv_topic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/display_date"
+            android:layout_marginRight="45dp"
+            android:paddingRight="4dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:text="Topic"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+
+        <Button
+
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignBaseline="@id/tv_topic"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="7dp"
+            android:id="@+id/download_button"
+            android:focusable="false"
+            android:background="@drawable/ic_download1" />
+
+
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

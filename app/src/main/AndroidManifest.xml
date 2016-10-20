@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tech.club">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <permission
+        android:name="com.tech.club.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.tech.club.permission.C2D_MESSAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:name=".ClassifyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".Ques"
+            android:label="@string/title_activity_ques">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tech.club.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Login"
+            android:label="@string/title_activity_login"
+            android:noHistory="true"
+            android:theme="@style/MyTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Signup"
+            android:label="@string/title_activity_signup"
+            android:theme="@style/basicTheme" />
+        <activity
+            android:name=".QuesSending"
+            android:label="@string/title_activity_ques_sending"
+            android:theme="@style/basicTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tech.club.Ques" />
+        </activity>
+        <activity
+            android:name=".AnswerShow"
+            android:label="@string/title_activity_answer_show"
+            android:theme="@style/basicTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tech.club.MainActivity" />
+        </activity>
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
+        <activity
+            android:name=".ChangePassword"
+            android:label="@string/title_activity_change_password"
+            android:theme="@style/basicTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tech.club.MainActivity" />
+        </activity>
+        <activity
+            android:name=".GettingFiles"
+            android:label="@string/title_activity_file"
+            android:theme="@style/basicTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tech.club.Ques" />
+        </activity>
+        <activity
+            android:name=".ClassifyGroups"
+            android:label="@string/title_activity_classify_groups"
+            android:theme="@style/ProfileTheme" />
+        <activity
+            android:name=".AboutApp"
+            android:label="@string/title_activity_about_app"
+            android:theme="@style/MyTheme" />
+        <activity
+            android:name=".UserImage"
+            android:label="@string/title_activity_user_image"
+            android:theme="@style/basicTheme" />
+        <activity
+            android:name=".Profile"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/ProfileTheme" />
+        <activity
+            android:name=".ChangeProfile"
+            android:label="@string/title_activity_change_profile"
+            android:parentActivityName=".Profile"
+            android:theme="@style/Myfabtheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tech.club.Profile" />
+        </activity>
+        <activity
+            android:name=".Feedback"
+            android:label="@string/title_activity_feedback"
+            android:theme="@style/basicTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tech.club.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Timeline"
+            android:label="@string/title_activity_timeline" />
+        <activity
+            android:name=".TimelineQuery"
+            android:label="@string/title_activity_query" />
+        <activity
+            android:name=".TimelineGroups"
+            android:label="@string/title_activity_timeline_groups" />
+        <activity
+            android:name=".GroupPage"
+            android:label="@string/title_activity_group_page"
+            android:theme="@style/basicTheme" />
+        <activity
+            android:name=".GroupMembers"
+            android:label="@string/title_activity_group_members"
+            android:parentActivityName=".GroupPage"
+            android:theme="@style/basicTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tech.club.GroupPage" />
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!-- Notification related stuff. -->
+
+        <service android:name="com.parse.PushService" />
+
+        <receiver android:name="com.parse.ParseBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".ClasickNotificationReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.parse.push.intent.RECEIVE" />
+                <action android:name="com.parse.push.intent.DELETE" />
+                <action android:name="com.parse.push.intent.OPEN" />
+                <action android:name="RETRY" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.parse.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.tech.club" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".list"
+            android:label="@string/title_activity_list"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".listing"
+            android:label="@string/title_activity_listing"
+            android:theme="@style/AppTheme"></activity>
+    </application>
+
+</manifest>

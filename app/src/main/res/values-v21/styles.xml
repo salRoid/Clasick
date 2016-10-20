@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="AppTheme.Base">
+        <item name="android:colorPrimary">@color/primaryColor</item>
+        <item name="android:colorPrimaryDark">@color/primaryColorDark</item>
+        <item name="android:colorAccent">@color/pink</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+
+        <!--     <item name="android:colorControlNormal">#bec0c0</item>
+
+             <item name="android:colorControlActivated"></item>-->
+
+        <!--<item name="android:colorControlHighlight">#ffff8d</item>-->
+    </style>
+
+
+    <style name="MyToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">#FFFFFF</item>
+    </style>
+
+
+    <style name="basicTheme" parent="AppTheme.Base">
+        <item name="android:colorPrimary">@color/primaryColor</item>
+        <item name="android:colorPrimaryDark">@color/primaryColorDark</item>
+        <item name="android:colorAccent">@color/pink</item>
+    </style>
+
+
+    <style name="ProfileTheme" parent="AppTheme.Base">
+        <item name="android:colorPrimary">#00838F</item>
+        <item name="android:colorPrimaryDark">#00838F</item>
+        <item name="android:colorAccent">@color/pink</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="CheckerTheme" parent="AppTheme.Base">
+        <item name="android:colorAccent">@color/pink</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+
+    <style name="MySignUpTheme" parent="AppTheme.Base">
+        <item name="android:colorPrimary">@color/primaryColor</item>
+        <item name="android:colorPrimaryDark">@color/basicbackcolor</item>
+        <item name="android:navigationBarColor">#ff0a3c46</item>
+        <item name="android:colorAccent">@color/primaryColor</item>
+        <item name="android:colorControlNormal">#bec0c0</item>
+        <item name="android:colorControlActivated">#00bcd4</item>
+
+    </style>
+
+
+    <style name="MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorPrimary">@color/primaryColor</item>
+        <item name="android:colorPrimaryDark">@color/basicbackcolor</item>
+        <item name="android:navigationBarColor">#ff0a3c46</item>
+        <!--<item name="android:colorControlHighlight">#ffff8d</item>-->
+    </style>
+
+
+    <style name="Mylabel" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColorHint">#ff06303a</item>
+        <item name="android:textColor">#00bcd4</item>
+        <item name="colorAccent">#00bcd4</item>
+        <item name="android:colorControlNormal">#bec0c0</item>
+        <item name="android:colorControlActivated">#00bcd4</item>
+    </style>
+
+    <style name="Myfabtheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorPrimary">#00838F</item>
+        <item name="android:colorPrimaryDark">#00838F</item>
+        <item name="android:colorAccent">#FFD600</item>
+        <item name="android:windowTranslucentStatus">true</item>
+
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+</resources>
+

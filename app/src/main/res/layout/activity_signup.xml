@@ -1,0 +1,102 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:padding="16dp"
+    tools:context="com.tech.club.Signup">
+
+
+    <LinearLayout
+
+        android:id="@+id/middle"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_centerVertical="true"
+        android:orientation="horizontal"></LinearLayout>
+
+    <LinearLayout
+
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/middle"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/set_user_id"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="8dp"
+            android:hint="UserName"
+            android:inputType="textFilter" />
+
+
+        <EditText
+            android:id="@+id/pass_once"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="8dp"
+            android:hint="Password"
+            android:inputType="textPassword" />
+
+
+        <EditText
+            android:id="@+id/pass_twice"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+
+            android:layout_margin="8dp"
+            android:hint="Re-enter password"
+            android:inputType="textPassword" />
+
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="8dp"
+            android:hint="E-mail"
+            android:inputType="textEmailAddress" />
+
+    </LinearLayout>
+
+    <RadioGroup
+
+        android:id="@+id/radio"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/middle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <RadioButton
+            android:id="@+id/teacher_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="teacher" />
+
+        <RadioButton
+            android:id="@+id/student_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="student" />
+    </RadioGroup>
+
+    <Button
+
+        android:id="@+id/finishSignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radio"
+        android:layout_marginTop="10dp"
+        android:text="Next" />
+
+
+</RelativeLayout>

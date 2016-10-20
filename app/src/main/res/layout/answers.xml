@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+
+
+    <TextView
+        android:id="@+id/comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Topic"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/display_commenter"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/comment"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="salroid"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+
+    <TextView
+        android:layout_marginTop="4dp"
+        android:id="@+id/display_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/comment"
+        android:layout_alignParentRight="true"
+        android:text="Mar 22/15"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        />
+
+</RelativeLayout>

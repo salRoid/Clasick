@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Clasick</string>
+    <string name="action_settings">Change Password</string>
+    <string name="ques">Welcome to Q &amp; A section </string>
+    <string name="title_activity_ques">Discussion</string>
+    <string name="hello_blank_fragment">HEY GUYS</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
+    <string name="title_activity_login">Clasick</string>
+    <string name="title_activity_signup">Signup</string>
+    <string name="title_activity_drive_content">Drive Content</string>
+    <string name="title_activity_ques_sending"></string>
+    <string name="title_activity_answer_show">Answers</string>
+    <string name="title_activity_change_password">Change Password</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_file">Upload</string>
+    <string name="title_activity_classify_groups">Groups</string>
+    <string name="title_activity_about_app">About App</string>
+    <string name="title_activity_user_image">User Image</string>
+    <string name="title_activity_profile"></string>
+    <string name="title_activity_review">Review</string>
+    <string name="title_activity_change_profile">Update</string>
+    <string name="title_activity_feedback">Feedback</string>
+    <string name="title_activity_timeline">Timeline</string>
+    <string name="title_activity_query">Query</string>
+    <string name="title_activity_timeline_groups">TimelineGroups</string>
+    <string name="title_activity_group">GroupActivity</string>
+    <string name="title_activity_group_page">GroupPage</string>
+    <string name="title_activity_group_members">Members</string>
+    <string name="title_activity_list">list</string>
+    <string name="title_activity_listing">listing</string>
+
+</resources>

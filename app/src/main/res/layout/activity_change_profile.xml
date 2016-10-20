@@ -1,0 +1,127 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tech.club.ChangeProfile">
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/transparent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <RelativeLayout
+        android:id="@+id/layout_top"
+        android:layout_width="fill_parent"
+        android:layout_height="140dp"
+        android:background="@color/primaryColorDark">
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="140dp"
+        android:layout_marginTop="142dp"
+        android:background="#018595">
+
+    </RelativeLayout>
+
+
+    <com.pkmmte.view.CircularImageView
+        android:id="@+id/change_pic"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_below="@id/app_bar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:src="@drawable/user2"
+        app:border="true"
+        app:border_color="#ffffff"
+        app:border_width="2dp" />
+
+    <android.support.design.widget.FloatingActionButton
+
+        android:id="@+id/upload_ques_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_bar"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_toRightOf="@id/change_pic"
+        android:src="@drawable/ic_file_upload_white_24dp"
+        app:backgroundTint="#FFD600"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        app:fabSize="mini"
+        app:rippleColor="@color/pink_pressed" />
+
+    <LinearLayout
+
+        android:id="@+id/tag_container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/change_pic"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <EditText
+            android:id="@+id/et_tag"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_weight="3"
+            android:background="@null"
+            android:editable="true"
+            android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:transitionName="transition" />
+
+        <Button
+            android:id="@+id/bt_tag_change"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/ic_mode_edit_white_24dp" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/app_bar"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="60dp"
+        android:layout_toRightOf="@id/change_pic">
+
+
+        <!-- <Button
+             android:id="@+id/bt_upload1"
+             android:layout_width="80dp"
+             android:visibility="gone"
+             android:layout_height="wrap_content"
+             android:background="@drawable/custom_button"
+             android:text="Browse" />
+
+         <Button
+             android:id="@+id/next1"
+             android:visibility="gone"
+             android:layout_width="80dp"
+             android:layout_height="wrap_content"
+             android:layout_below="@id/bt_upload1"
+             android:layout_marginTop="8dp"
+             android:background="@drawable/custom_button"
+             android:text="Finish" />-->
+
+
+    </RelativeLayout>
+</RelativeLayout>
