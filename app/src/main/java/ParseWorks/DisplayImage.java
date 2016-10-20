@@ -1,8 +1,6 @@
 package ParseWorks;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
 import com.parse.GetCallback;
 import com.parse.ParseException;
@@ -11,9 +9,6 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.tech.club.MainActivity;
 import com.tech.club.Profile;
-import com.tech.club.QuesSending;
-
-import java.net.URL;
 
 public class DisplayImage {
 

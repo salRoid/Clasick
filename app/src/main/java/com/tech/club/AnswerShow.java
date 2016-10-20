@@ -4,8 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,21 +19,16 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.SaveCallback;
 
-
 import java.util.List;
 
-
 import Adapters.AnswersListAdapter;
-import Adapters.QuestionsListAdapter;
 import Data.SetterGetterAnswers;
-
 import ParseWorks.Answers;
 import ParseWorks.QAworks;
 
@@ -45,26 +37,41 @@ import ParseWorks.QAworks;
 public class AnswerShow extends AppCompatActivity implements View.OnClickListener {
 
 
-    EditText ans;
-    ProgressDialog pDialog;
-    Button b1;
     /*static ArrayAdapter<String> adapter;*/
     static AnswersListAdapter adapter;
     static ListView answerList;
-    private static ProgressBar spinner;
     static TextView set_user;
     static TextView set_question;
     static List<SetterGetterAnswers> sgAnswersArrayList = null;
-    int position;
     static Context context;
-    private String question = "";
-    String objectId;
-    private String qUser;
     static TextView first;
     static ImageView first_img;
+    private static ProgressBar spinner;
+    EditText ans;
+    ProgressDialog pDialog;
+    Button b1;
+    int position;
+    String objectId;
+    private String question = "";
+    private String qUser;
     private String up_time;
     private TextView set_time;
 
+    public static void retrieveAnswersCallback(List<SetterGetterAnswers> setterGetterAnswersArrayList, boolean success) {
+
+        if (success) {
+
+            sgAnswersArrayList = setterGetterAnswersArrayList;
+            adapter = new AnswersListAdapter(context, setterGetterAnswersArrayList);
+            answerList.setAdapter(adapter);
+            spinner.setVisibility(View.INVISIBLE);
+        } else {
+            first_img.setVisibility(View.VISIBLE);
+            first.setVisibility(View.VISIBLE);
+            spinner.setVisibility(View.INVISIBLE);
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +119,6 @@ public class AnswerShow extends AppCompatActivity implements View.OnClickListene
         Answers.retreieveAnswers(objectId);
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -213,22 +219,6 @@ public class AnswerShow extends AppCompatActivity implements View.OnClickListene
             Toast.makeText(AnswerShow.this, "Can't give a blank answer.", Toast.LENGTH_SHORT).show();
 
         }
-    }
-
-    public static void retrieveAnswersCallback(List<SetterGetterAnswers> setterGetterAnswersArrayList, boolean success) {
-
-        if (success) {
-
-            sgAnswersArrayList = setterGetterAnswersArrayList;
-            adapter = new AnswersListAdapter(context, setterGetterAnswersArrayList);
-            answerList.setAdapter(adapter);
-            spinner.setVisibility(View.INVISIBLE);
-        } else {
-            first_img.setVisibility(View.VISIBLE);
-            first.setVisibility(View.VISIBLE);
-            spinner.setVisibility(View.INVISIBLE);
-        }
-
     }
 
     @Override

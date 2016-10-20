@@ -68,7 +68,7 @@ public class GroupPage extends AppCompatActivity {
         ques_list=(ListView)findViewById(R.id.grp_ques_list);
         upload_list=(ListView)findViewById(R.id.grp_upload_list);*/
 
-       fab=(FloatingActionButton)findViewById(R.id.join_fab);
+        fab=(FloatingActionButton)findViewById(R.id.join_fab);
         bt_edit_desc=(Button)findViewById(R.id.edit_desc);
         descript=(TextView)findViewById(R.id.wr_desc);
       /*  query2_c=(TextView)findViewById(R.id.query_c);*/
@@ -119,31 +119,31 @@ public class GroupPage extends AppCompatActivity {
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Group");
         query.whereEqualTo("name", grp_name);
-       query.getFirstInBackground(new GetCallback<ParseObject>() {
-           @Override
-           public void done(ParseObject parseObject, ParseException e) {
-               if (e == null) {
-                   grp_admin = parseObject.getString("admin");
-                   grp_desc = parseObject.getString("desc");
-                   descript.setText(grp_desc);
+        query.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(ParseObject parseObject, ParseException e) {
+                if (e == null) {
+                    grp_admin = parseObject.getString("admin");
+                    grp_desc = parseObject.getString("desc");
+                    descript.setText(grp_desc);
 
-                   if (ParseUser.getCurrentUser().getUsername().equals(grp_admin)) {
-                       fab.setImageResource(R.drawable.ic_done_white_24dp);
-                       bt_edit_desc.setVisibility(View.VISIBLE);
-                   } else
-                       bt_edit_desc.setVisibility(View.INVISIBLE);
+                    if (ParseUser.getCurrentUser().getUsername().equals(grp_admin)) {
+                        fab.setImageResource(R.drawable.ic_done_white_24dp);
+                        bt_edit_desc.setVisibility(View.VISIBLE);
+                    } else
+                        bt_edit_desc.setVisibility(View.INVISIBLE);
 
-                   bt_edit_desc.setOnClickListener(new View.OnClickListener() {
-                       @Override
-                       public void onClick(View v) {
-                           Toast.makeText(GroupPage.this, "Update still in progress", Toast.LENGTH_SHORT).show();
-                       }
-                   });
+                    bt_edit_desc.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(GroupPage.this, "Update still in progress", Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
-               } else
-                   Toast.makeText(GroupPage.this, "dbd", Toast.LENGTH_SHORT).show();
-           }
-       });
+                } else
+                    Toast.makeText(GroupPage.this, "dbd", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
        /* ParseQuery<ParseObject> ques_query=ParseQuery.getQuery("Ques");
@@ -238,10 +238,6 @@ public class GroupPage extends AppCompatActivity {
 
             }
         });
-
-
-
-
 
     }
 

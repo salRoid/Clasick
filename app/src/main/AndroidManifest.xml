@@ -29,13 +29,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" />
-        <activity
-            android:name=".Ques"
-            android:label="@string/title_activity_ques">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tech.club.MainActivity" />
-        </activity>
+
         <activity
             android:name=".Login"
             android:label="@string/title_activity_login"
@@ -55,9 +49,6 @@
             android:name=".QuesSending"
             android:label="@string/title_activity_ques_sending"
             android:theme="@style/basicTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tech.club.Ques" />
         </activity>
         <activity
             android:name=".AnswerShow"
@@ -80,9 +71,6 @@
             android:name=".GettingFiles"
             android:label="@string/title_activity_file"
             android:theme="@style/basicTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tech.club.Ques" />
         </activity>
         <activity
             android:name=".ClassifyGroups"
@@ -117,15 +105,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tech.club.MainActivity" />
         </activity>
-        <activity
-            android:name=".Timeline"
-            android:label="@string/title_activity_timeline" />
-        <activity
-            android:name=".TimelineQuery"
-            android:label="@string/title_activity_query" />
-        <activity
-            android:name=".TimelineGroups"
-            android:label="@string/title_activity_timeline_groups" />
+
         <activity
             android:name=".GroupPage"
             android:label="@string/title_activity_group_page"
@@ -175,14 +155,6 @@
             </intent-filter>
         </receiver>
 
-        <activity
-            android:name=".list"
-            android:label="@string/title_activity_list"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".listing"
-            android:label="@string/title_activity_listing"
-            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

@@ -1,24 +1,21 @@
 package com.tech.club;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.Collections;
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
-    private LayoutInflater inflater;
     Context context;
-    private ClickListener clickListener;
     List<Information> data= Collections.emptyList() ;
+    private LayoutInflater inflater;
+    private ClickListener clickListener;
     public Adapter(Context context ,List<Information> data) {
         this.context=context;
         inflater = LayoutInflater.from(context);
@@ -51,6 +48,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         return data.size();
     }
 
+    public interface ClickListener {
+        public void itemClicked(View v, int position);
+
+
+    }
+
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView title;
         ImageView icon;
@@ -69,11 +72,5 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             }
 
         }
-    }
-
-    public interface ClickListener {
-        public void itemClicked(View v ,int position);
-
-
     }
 }

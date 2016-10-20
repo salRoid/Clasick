@@ -1,18 +1,12 @@
 package ParseWorks;
 
 import android.content.Context;
-import android.widget.Toast;
+
 import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.ParseUser;
-import com.parse.SaveCallback;
-import com.tech.club.AnswerShow;
-import com.tech.club.GroupPage;
-import com.tech.club.MainActivity;
 import com.tech.club.Ques;
 
 import java.util.ArrayList;

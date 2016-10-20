@@ -1,27 +1,15 @@
 package Adapters;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.parse.GetCallback;
-import com.parse.ParseException;
-import com.parse.ParseFile;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.pkmmte.view.CircularImageView;
 import com.squareup.picasso.Picasso;
-import com.tech.club.MainActivity;
-import com.tech.club.Ques;
 import com.tech.club.R;
-import com.tech.club.RoundTransform;
 
 import java.util.List;
 
@@ -30,11 +18,11 @@ import Data.SetterGetterQuestions;
 public class QuestionsListAdapter  extends BaseAdapter{
 
 
-    List<SetterGetterQuestions> setterGetterQuestionsList=null;
-    Context context;
     static TextView user;
     static TextView time;
     static TextView count;
+    List<SetterGetterQuestions> setterGetterQuestionsList = null;
+    Context context;
     private String questionTime;
     private String questionCount;
     private String questionsUser;

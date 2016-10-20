@@ -1,6 +1,5 @@
 package com.tech.club;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,15 +11,12 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.TextureView;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -89,7 +85,7 @@ public class ClassifyGroups extends AppCompatActivity {
         user_desig = sp.getString("who", " ");
 
         if (user_desig.contains("Student")) {
-           bt_make.setVisibility(View.INVISIBLE);
+            bt_make.setVisibility(View.INVISIBLE);
         }
         if (user_desig.contains("Teacher")) {
             bt_make.setVisibility(View.VISIBLE);
@@ -109,16 +105,16 @@ public class ClassifyGroups extends AppCompatActivity {
                     check.getFirstInBackground(new GetCallback<ParseObject>() {
                         @Override
                         public void done(ParseObject parseObject, ParseException e) {
-                       if(e==null){
-                           confirmation=false;
-                           bt_check.setBackgroundColor(Color.RED);
-                           grpname_check=null;
-                       }
+                            if(e==null){
+                                confirmation=false;
+                                bt_check.setBackgroundColor(Color.RED);
+                                grpname_check=null;
+                            }
                             else{
-                           bt_check.setBackgroundColor(Color.GREEN);
-                           confirmation=true;
+                                bt_check.setBackgroundColor(Color.GREEN);
+                                confirmation=true;
 
-                       }
+                            }
                         }
                     });
                 }
