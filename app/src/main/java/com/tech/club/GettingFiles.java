@@ -83,7 +83,6 @@ public class GettingFiles extends ActionBarActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ETtitle= (EditText) findViewById(R.id.title);
@@ -244,6 +243,9 @@ public class GettingFiles extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+
+        if (id == android.R.id.home)
+            finish();
 
         return super.onOptionsItemSelected(item);
     }

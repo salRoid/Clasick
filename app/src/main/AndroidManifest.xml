@@ -49,6 +49,12 @@
             android:name=".QuesSending"
             android:label="@string/title_activity_ques_sending"
             android:theme="@style/basicTheme">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
         <activity
             android:name=".AnswerShow"
@@ -80,6 +86,13 @@
             android:name=".AboutApp"
             android:label="@string/title_activity_about_app"
             android:theme="@style/MyTheme" />
+
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+
         <activity
             android:name=".UserImage"
             android:label="@string/title_activity_user_image"
@@ -88,6 +101,12 @@
             android:name=".Profile"
             android:label="@string/title_activity_profile"
             android:theme="@style/ProfileTheme" />
+
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         <activity
             android:name=".ChangeProfile"
             android:label="@string/title_activity_change_profile"

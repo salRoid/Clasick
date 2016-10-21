@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,7 +18,6 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.parse.Parse;
 import com.parse.ParseInstallation;
 import com.parse.ParseUser;
 import com.squareup.picasso.Picasso;
@@ -28,14 +27,18 @@ import ParseWorks.DisplayImage;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private Toolbar toolbar;
-    private DrawerLayout drawerLayout;
+    static ImageView profile;
     TextView User;
-    private String user_desig;
     TextView designation;
     ActionBarDrawerToggle abdt;
-    static ImageView profile;
+    private Toolbar toolbar;
+    private DrawerLayout drawerLayout;
+    private String user_desig;
 
+    public static void retriveProfileCallback(Context context, String url) {
+        Picasso.with(context).load(url).placeholder(R.drawable.user2).error(R.drawable.user2).into(profile);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,15 +94,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    private void installupdate() {
-        ParseInstallation pinst= ParseInstallation.getCurrentInstallation();
-        ParseUser puser=ParseUser.getCurrentUser();
-        if(puser!=null){
-            pinst.put("username",puser.getUsername());
-            pinst.saveInBackground();
-        }
-    }
-
     /*private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -112,6 +106,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 });
     }
 */
+
+    private void installupdate() {
+        ParseInstallation pinst = ParseInstallation.getCurrentInstallation();
+        ParseUser puser = ParseUser.getCurrentUser();
+        if (puser != null) {
+            pinst.put("username", puser.getUsername());
+            pinst.saveInBackground();
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -138,16 +141,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         abdt.onConfigurationChanged(newConfig);
     }
 
-
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
 
 
-        if (menuItem.getItemId() == R.id.nav_group) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-            startActivity(new Intent(this, ClassifyGroups.class));
-            return true;
-        }
         if (menuItem.getItemId() == R.id.nav_profile) {
             drawerLayout.closeDrawer(GravityCompat.START);
             Intent intent =new Intent(MainActivity.this,Profile.class);
@@ -187,12 +184,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         return false;
     }
-
-
-    public static void retriveProfileCallback(Context context, String url) {
-        Picasso.with(context).load(url).placeholder(R.drawable.user2).error(R.drawable.user2).into(profile);
-
-            }
 
     @Override
     public void onBackPressed() {
